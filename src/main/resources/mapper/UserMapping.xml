@@ -6,4 +6,14 @@
         SELECT * FROM user
         WHERE username = #{username} AND password = #{password};
     </select>
+    <select id="queryAllUser" resultType="com.demo.login.bean.User">
+        SELECT * FROM user
+        <if test="queryName != null">
+            WHERE username = #{queryName}
+        </if>
+    </select>
+    <select id="getUserRole" resultType="String">
+        SELECT role FROM user
+        WHERE username = #{username}
+    </select>
 </mapper>
