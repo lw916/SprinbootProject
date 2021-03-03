@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.demo.login.bean.User;
 import com.demo.login.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,20 +19,20 @@ public class LoginController {
     public String Login(User user){
         HashMap<String,Object> resultReturn = new HashMap<>();
         if(user.getUsername() == "" || user.getPassword() == ""){
-            resultReturn.put("status","400");
-            resultReturn.put("message","Username or password required!");
+            resultReturn.put("flag","400");
+            resultReturn.put("messages","账户或密码未输入！");
         }else{
             User queryUser = userdao.getUserInfo(user.getUsername(),user.getPassword());
             if(queryUser == null){
-                resultReturn.put("status","401");
-                resultReturn.put("message","User's username or password is wrong or user is not exist!");
+                resultReturn.put("flag","401");
+                resultReturn.put("messages","账户名或密码错误/账户不存在");
             }else{
                 if(queryUser.getStatus().equals("1")){
-                    resultReturn.put("status","200");
-                    resultReturn.put("message","success");
+                    resultReturn.put("flag","200");
+                    resultReturn.put("messages","登陆成功");
                 }else{
-                    resultReturn.put("status","402");
-                    resultReturn.put("message","User is block!");
+                    resultReturn.put("flag","402");
+                    resultReturn.put("messages","账户被禁用");
                 }
 
             }
