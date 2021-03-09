@@ -9,4 +9,5 @@ public interface UserDao {
     User getUserInfo(@Param("username") String username,@Param("password") String password);
     List<User> queryAllUser(@Param("queryName") String queryName);
     String getUserRole(@Param("username") String username);
+    String getUserPassword(@Param("username") String username,@Param("email") String email);
 }

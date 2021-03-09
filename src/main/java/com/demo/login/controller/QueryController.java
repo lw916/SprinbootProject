@@ -59,4 +59,23 @@ public class QueryController {
         return JSON.toJSONString(result);
     }
 
+    @RequestMapping("forget")
+    public String  queryPassword(String username,String email){
+        HashMap<String,Object> result = new HashMap<>();
+        String password = null;
+        try{
+            password = userDao.getUserPassword(username,email);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        if(password == null){
+            result.put("status","400");
+            result.put("value",null);
+        }else{
+            result.put("status","200");
+            result.put("value",password);
+        }
+        return JSON.toJSONString(result);
+    }
+
 }

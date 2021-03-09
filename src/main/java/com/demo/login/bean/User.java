@@ -6,15 +6,17 @@ public class User {
     private String password;
     private String status;
     private String role;
+    private String email;
 
     public User() {
     }
 
-    public User(String username, String password, String status, String role) {
+    public User(String username, String password, String status, String role,String email) {
         this.username = username;
         this.password = password;
         this.status = status;
         this.role = role;
+        this.email = email;
     }
 
     public String getUsername() {
@@ -33,6 +35,10 @@ public class User {
         return role;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -49,6 +55,10 @@ public class User {
         this.role = role;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -56,6 +66,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", status='" + status + '\'' +
                 ", role='" + role + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

@@ -16,4 +16,8 @@
         SELECT role FROM user
         WHERE username = #{username}
     </select>
+    <select id="getUserPassword" resultType="String">
+        SELECT password FROM user
+        WHERE username = #{username} AND email = #{email}
+    </select>
 </mapper>
